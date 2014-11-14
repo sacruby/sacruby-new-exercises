@@ -30,8 +30,8 @@ describe Iterator do
   end
 
   describe '#add_all' do
-    it "returns the unique elements of the array" do
-      Iterator.new([1,2,2,3,4,4]).uniques_only.must_equal(16)
+    it "returns the sum of all elements in the array" do
+      Iterator.new([1,2,2,3,4,4]).add_all.must_equal(16)
     end
   end
 end
