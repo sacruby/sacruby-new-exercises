@@ -13,7 +13,7 @@ describe RPNCalculator do
   it "adds two numbers" do
     calculator.push(2)
     calculator.push(3)
-    calculator.plus
+    calculator.push(:+)
     calculator.value.must_equal 5
   end
 
@@ -21,16 +21,16 @@ describe RPNCalculator do
     calculator.push(2)
     calculator.push(3)
     calculator.push(4)
-    calculator.plus
+    calculator.push(:+)
     calculator.value.must_equal 7
-    calculator.plus
+    calculator.push(:+)
     calculator.value.must_equal 9
   end
 
   it "subtracts the second number from the first number" do
     calculator.push(2)
     calculator.push(3)
-    calculator.minus
+    calculator.push(:-)
     calculator.value.must_equal -1
   end
 
@@ -38,9 +38,9 @@ describe RPNCalculator do
     calculator.push(2)
     calculator.push(3)
     calculator.push(4)
-    calculator.minus
+    calculator.push(:-)
     calculator.value.must_equal -1
-    calculator.plus
+    calculator.push(:+)
     calculator.value.must_equal 1
   end
 
@@ -48,9 +48,9 @@ describe RPNCalculator do
     calculator.push(2)
     calculator.push(3)
     calculator.push(4)
-    calculator.divide
+    calculator.push(:/)
     calculator.value.must_equal (3.0 / 4.0)
-    calculator.times
+    calculator.push(:*)
     calculator.value.must_equal 2.0 * (3.0 / 4.0)
   end
 
@@ -58,9 +58,9 @@ describe RPNCalculator do
     # 1 2 + 3 * => (1 + 2) * 3
     calculator.push(1)
     calculator.push(2)
-    calculator.plus
+    calculator.push(:+)
     calculator.push(3)
-    calculator.times
+    calculator.push(:*)
     calculator.value.must_equal (1 + 2) * 3
 
     @calculator = RPNCalculator.new
@@ -68,8 +68,8 @@ describe RPNCalculator do
     calculator.push(1)
     calculator.push(2)
     calculator.push(3)
-    calculator.times
-    calculator.plus
+    calculator.push(:*)
+    calculator.push(:+)
     calculator.value.must_equal 1 + (2 * 3)
   end
 
