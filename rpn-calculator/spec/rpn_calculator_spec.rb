@@ -73,4 +73,11 @@ describe RPNCalculator do
     calculator.value.must_equal 1 + (2 * 3)
   end
 
+  it "evaluates a string" do
+    calculator.evaluate("1 2 3 * +").must_equal ((2 * 3) + 1)
+    calculator.evaluate("4 5 -").must_equal (4 - 5)
+    calculator.evaluate("2 3 /").must_equal (2.0 / 3.0)
+    calculator.evaluate("1 2 3 * + 4 5 - /").must_equal (1.0 + (2 * 3)) / (4 - 5)
+  end
+
 end
